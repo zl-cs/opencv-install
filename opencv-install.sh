@@ -14,8 +14,9 @@ echo "--- Downloading OpenCV" $version
 mkdir -p $dldir
 cd $dldir
 git clone git@github.com:opencv/opencv.git
-git checkout $version
 cd opencv
+git checkout $version
+
 
 echo "--- Downloading OpenCV_contrib" $version
 git clone git@github.com:opencv/opencv_contrib.git
@@ -26,7 +27,7 @@ cd ..
 echo "--- Installing OpenCV and OpenCV_contrib" $version
 mkdir build
 cd build
-cmake -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..
+cmake -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D WITH_CUDA=ON -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.0 -D CUDA_ARCH_BIN=6.1 -D CUDA_ARCH_PTX="" ..
 make -j 4
 sudo make install
 sudo sh -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf'
