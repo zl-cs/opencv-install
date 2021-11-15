@@ -2,10 +2,10 @@
 # Liang in 2021-11-13
 # variables:
 # version - the version of OpenCV to be installed
-# downloaddir - the download directory of the opencv and opencv_contrib package
+# dldir - the download directory of the opencv and opencv_contrib package
 
-version=3.4.1
-downloaddir=OpenCV
+version=3.4.3
+dldir=OpenCV
 
 echo "--- Installing Dependencies ---"
 source dependencies.sh
